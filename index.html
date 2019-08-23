@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<body onload="urlDrawOnload()">
+
+<select id="vSelect" onchange="bytVaning()">
+  <option value="4">Våning 4</option>
+  <option value="5">Våning 5</option>
+</select>
+
+<canvas id="myCanvas" width="600" height="300" style="border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 600px 300px;" onclick="clickCanvas()">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<br>
+
+<p id="koordinater"></p>
+
+<p id="urlText"></p>
+
+<p id="testText"></p>
+
+<p id="xFromUrl"></p>
+
+
+<script>
+var baseUrl = window.location.href;
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+//Aktiveras onload 
+function urlDrawOnload() {
+	//Kollar om url:en innehåller x=
+	var regxPatt = new RegExp("x=");
+	var regxRes = regxPatt.test(baseUrl);
+  
+  //Om url innehåller x=, slicea ut dess variabler
+  if(regxRes == true) {
+    
+    //Tar bort allt förutom de 13 sista tecken i url-string
+    var sliceUrlParams = baseUrl.slice(-13);
+    //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
+    var vFromSlice = sliceUrlParams.slice(2,3);
+    var xFromSlice = sliceUrlParams.slice(5, 8);
+    var yFromSlice = sliceUrlParams.slice(10, 13);
+    
+    //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
+    document.getElementById('vSelect').selectedIndex = vFromSlice - 4;
+    
+    //Rensar föregående klick innan
+    ctx.clearRect(0, 0, 600, 300);
+    //Börjar rita cirkeln
+    ctx.beginPath();
+    ctx.arc(xFromSlice,yFromSlice,20,0,2*Math.PI);
+    //Style cirkelns utkant
+    ctx.strokeStyle = "rgba(255,0,0,0.3)";
+    ctx.stroke();
+    //Style cirkelns innehåll
+    ctx.fillStyle = "rgba(255,0,0,0.3)";
+    ctx.fill();
+    
+  //} else if(regxRes == false) {
+		//document.getElementById("xFromUrl").innerHTML = regxRes;
+  }
+	
+}
+
+
+//Dropdown-script som byter bild på canvas mellan v4 & v5
+function bytVaning() {
+	if(document.getElementById('vSelect').value == "5") {
+  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; 			background: url('https://i.imgur.com/aY089ox.png'); background-size: 600px 300px;");
+	} else if(document.getElementById('vSelect').value == "4") {
+  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 600px 300px;");
+    }
+}
+
+//Aktiveras vid klick på canvas
+function clickCanvas() {
+	
+  //Hämtar koordinater för klicket
+  function getRelativeCoords(event) {
+    return { x: event.offsetX, y: event.offsetY };
+	}
+  //Rensar föregående klick innan
+  ctx.clearRect(0, 0, 600, 300);
+  //Börjar rita cirkeln
+  ctx.beginPath();
+  ctx.arc(event.offsetX,event.offsetY,20,0,2*Math.PI);
+  //Style cirkelns utkant
+  ctx.strokeStyle = "rgba(255,0,0,0.3)";
+  ctx.stroke();
+  //Style cirkelns innehåll
+  ctx.fillStyle = "rgba(255,0,0,0.3)";
+	ctx.fill();
+  
+  //Visar koordinaterna i textelementet
+  document.getElementById("koordinater").innerHTML = "X = " + event.offsetX + "<br>Y = " + event.offsetY;
+  
+  //Skapar url med koordinater i parametrar
+  var vaningAktiv = document.getElementById('vSelect').value;
+  
+  //Skapar x och y variabler som alltid har 3 siffror med hjälp av nollor
+  var pad = "000";
+  var xZerofilled = (pad+event.offsetX).slice(-pad.length);
+  var yZerofilled = (pad+event.offsetY).slice(-pad.length);
+  
+  //Skapar en ny url med de valda koordinaterna som parametrar
+	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
+
+	document.getElementById("urlText").innerHTML = "Ny URL med koordinater och våningsplan:<br>" + newUrl;
+  
+  //Tar bort allt förutom de 13 sista tecken i url-string
+  var sliceUrlParams = newUrl.slice(-13);
+  //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
+  var vFromSlice = sliceUrlParams.slice(2,3);
+  var xFromSlice = sliceUrlParams.slice(5, 8);
+  var yFromSlice = sliceUrlParams.slice(10, 13);
+  
+  document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
+  
+  
+}
+
+</script> 
+
+</body>
+</html>
