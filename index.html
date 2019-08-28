@@ -2,21 +2,26 @@
 <html>
 <body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center;">
 
+<div id="infoContainer" style="width: 400px; position: absolute; margin: 10px auto auto 700px;">
+
+  <select id="vSelect" onchange="bytVaning()" style="text-align: center;">
+    <option value="4">Våning 4</option>
+    <option value="5">Våning 5</option>
+  </select>
+
+  <br>
+
+  <p id="våningstext" style="font-size: 36px;"></p>
+
+  <p id="koordinater"></p>
+
+  <p id="urlText"></p>
+
+</div>
+
 <canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
-<select id="vSelect" onchange="bytVaning()" style="text-align: center;">
-  <option value="4">Våning 4</option>
-  <option value="5">Våning 5</option>
-</select>
-
-<br>
-
-<p id="våningstext" style="font-size: 36px;"></p>
-
-<p id="koordinater"></p>
-
-<p id="urlText"></p>
 
 <script>
 var baseUrl = window.location.href;
