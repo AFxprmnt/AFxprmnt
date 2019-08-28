@@ -26,7 +26,7 @@
 
 </div>
 
-<canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
+<canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/zG8Dkd7.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 
@@ -42,14 +42,12 @@ var ctx = c.getContext("2d");
 var canvasWidth = 1440;
 var canvasHeight = 720;
 
-//var background = new Image();
-//background.src = "https://i.imgur.com/300wJkp.png";
-//background.width = 1440;
-//background.height = 720;
+var background = new Image();
+background.src = "https://i.imgur.com/zG8Dkd7.png";
 
-//background.onload = function(){
-  //ctx.drawImage(background,0,0);   
-//}
+background.onload = function(){
+  ctx.drawImage(background,0,0);   
+}
 
 document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
 
@@ -72,6 +70,7 @@ function urlDrawOnload() {
     
     //Rensar föregående klick innan
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.drawImage(background,0,0);  
     //Börjar rita cirkeln
     ctx.beginPath();
     ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
@@ -90,10 +89,10 @@ function urlDrawOnload() {
 //Dropdown-script som byter bild på canvas mellan v4 & v5
 function bytVaning() {
 	if(document.getElementById('vSelect').value == "5") {
-  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/aY089ox.png'); background-size: 1440px 720px;");
+  	background.src = "https://i.imgur.com/0riV4cW.png";
     document.getElementById("våningstext").innerHTML = "Våning 5";
 	} else if(document.getElementById('vSelect').value == "4") {
-  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;");
+  	background.src = "https://i.imgur.com/zG8Dkd7.png";
     document.getElementById("våningstext").innerHTML = "Våning 4";
     }
 }
@@ -107,6 +106,7 @@ function clickCanvas() {
 	}
   //Rensar föregående klick innan
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.drawImage(background,0,0);  
   //Börjar rita cirkeln
   ctx.beginPath();
   ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
