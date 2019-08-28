@@ -2,7 +2,7 @@
 <html>
 <body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center;">
 
-<div id="infoContainer" style="width: 400px; position: absolute; margin: 5px auto auto 660px;">
+<div id="infoContainer" style="display: inline-block; width: 400px; height: 200px; position: center; ">
 
   <select id="vSelect" onchange="bytVaning()" style="text-align: center;">
     <option value="4">Våning 4</option>
@@ -13,7 +13,9 @@
 
   <p id="våningstext" style="font-size: 36px;"></p>
 
+  <!--
   <p id="koordinater"></p>
+  -->
 
   <p id="urlText"></p>
   
@@ -116,7 +118,7 @@ function clickCanvas() {
 	ctx.fill();
   
   //Visar koordinaterna i textelementet
-  document.getElementById("koordinater").innerHTML = "X = " + event.offsetX + "<br>Y = " + event.offsetY;
+  //document.getElementById("koordinater").innerHTML = "X = " + event.offsetX + "<br>Y = " + event.offsetY;
   
   //Skapar url med koordinater i parametrar
   var vaningAktiv = document.getElementById('vSelect').value;
@@ -134,7 +136,7 @@ function clickCanvas() {
   	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
   }
 
-	document.getElementById("urlText").innerHTML = "<br>Kopiera och skicka följande URL:<br><br>" + newUrl;
+	document.getElementById("urlText").innerHTML = "Kopiera och skicka följande URL:<br><br>" + newUrl;
   
   
   /*
@@ -148,6 +150,7 @@ function clickCanvas() {
 }
   */
   
+  /*
     //Tar bort allt förutom de 13 sista tecken i url-string
     var sliceUrlParams = baseUrl.slice(-15);
     //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
@@ -157,6 +160,7 @@ function clickCanvas() {
   
   document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
   
+  */
 }
 
 </script> 
