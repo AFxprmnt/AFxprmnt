@@ -2,27 +2,21 @@
 <html>
 <body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center;">
 
+<canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
 <select id="vSelect" onchange="bytVaning()" style="text-align: center;">
   <option value="4">Våning 4</option>
   <option value="5">Våning 5</option>
 </select>
 
-<canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
-Your browser does not support the HTML5 canvas tag.</canvas>
-
 <br>
+
+<p id="våningstext" style="font-size: 36px;"></p>
 
 <p id="koordinater"></p>
 
 <p id="urlText"></p>
-
-<!--
-<p id="testText"></p>
-
-<p id="xFromUrl"></p>
-
-<p id="testText2"></p>
--->
 
 <script>
 var baseUrl = window.location.href;
@@ -35,6 +29,18 @@ var ctx = c.getContext("2d");
 
 var canvasWidth = 1440;
 var canvasHeight = 720;
+
+
+//var background = new Image();
+//background.src = "https://i.imgur.com/300wJkp.png";
+//background.width = 1440;
+//background.height = 720;
+
+//background.onload = function(){
+  //ctx.drawImage(background,0,0);   
+//}
+
+document.getElementById("våningstext").innerHTML = "Våning 4";
 
 //Aktiveras onload 
 function urlDrawOnload() {
@@ -64,10 +70,6 @@ function urlDrawOnload() {
     ctx.fillStyle = "rgba(255,0,0,0.3)";
     ctx.fill();
 
-    //var clearedUrl = baseUrl.slice(0, -14);
-    //return clearedUrl;
-    
-  //} else if(regxRes == false) {
   }
 	
 }
@@ -77,8 +79,10 @@ function urlDrawOnload() {
 function bytVaning() {
 	if(document.getElementById('vSelect').value == "5") {
   	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/aY089ox.png'); background-size: 1440px 720px;");
+    document.getElementById("våningstext").innerHTML = "Våning 5";
 	} else if(document.getElementById('vSelect').value == "4") {
   	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;");
+    document.getElementById("våningstext").innerHTML = "Våning 4";
     }
 }
 
@@ -122,8 +126,6 @@ function clickCanvas() {
 
 	document.getElementById("urlText").innerHTML = "<br>Kopiera och skicka följande URL:<br><br>" + newUrl;
   
-  //document.getElementById("testText2").innerHTML = urlDrawOnload();
-  
     //Tar bort allt förutom de 13 sista tecken i url-string
     var sliceUrlParams = baseUrl.slice(-15);
     //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
@@ -132,7 +134,6 @@ function clickCanvas() {
     var yFromSlice = sliceUrlParams.slice(11, 15);
   
   document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
-  
   
 }
 
