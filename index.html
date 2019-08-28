@@ -16,23 +16,25 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 <p id="urlText"></p>
 
+<!--
 <p id="testText"></p>
 
 <p id="xFromUrl"></p>
 
 <p id="testText2"></p>
-
+-->
 
 <script>
 var baseUrl = window.location.href;
+//Kollar om url:en innehåller x=
+var regxPatt = new RegExp("x=");
+var regxRes = regxPatt.test(baseUrl);
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
 //Aktiveras onload 
 function urlDrawOnload() {
-	//Kollar om url:en innehåller x=
-	var regxPatt = new RegExp("x=");
-	var regxRes = regxPatt.test(baseUrl);
   
   //Om url innehåller x=, slicea ut dess variabler
   if(regxRes == true) {
@@ -59,7 +61,8 @@ function urlDrawOnload() {
     ctx.fillStyle = "rgba(255,0,0,0.3)";
     ctx.fill();
 
-    var baseUrl = window.location.href.slice(0, -14);
+    //var clearedUrl = baseUrl.slice(0, -14);
+    //return clearedUrl;
     
   //} else if(regxRes == false) {
   }
@@ -106,10 +109,17 @@ function clickCanvas() {
   var xZerofilled = (pad+event.offsetX).slice(-pad.length);
   var yZerofilled = (pad+event.offsetY).slice(-pad.length);
   
-  //Skapar en ny url med de valda koordinaterna som parametrar
-	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
+  //Om url innehåller x=: Skapar en ny url med de valda koordinaterna som parametrar
+  if(regxRes == true) {
+  	var clearedUrl = baseUrl.slice(0, -14);
+  	var newUrl = clearedUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
+  } else if(regxRes == false) {
+  	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
+  }
 
-	document.getElementById("urlText").innerHTML = "Ny URL med koordinater och våningsplan:<br>" + newUrl;
+	document.getElementById("urlText").innerHTML = "<br>Kopiera och skicka följande URL:<br><br>" + newUrl;
+  
+  //document.getElementById("testText2").innerHTML = urlDrawOnload();
   
   //Tar bort allt förutom de 13 sista tecken i url-string
   var sliceUrlParams = newUrl.slice(-13);
@@ -119,6 +129,7 @@ function clickCanvas() {
   var yFromSlice = sliceUrlParams.slice(10, 13);
   
   document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
+  
   
 }
 
