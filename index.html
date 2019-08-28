@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center;">
+<body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center; ">
 
-<div id="infoContainer" style="display: inline-block; width: 400px; height: 200px; position: center; ">
+<div id="infoContainer" style="display: block; width: 400px; height: 200px; margin: auto; ">
 
   <select id="vSelect" onchange="bytVaning()" style="text-align: center;">
     <option value="4">Våning 4</option>
@@ -150,17 +150,6 @@ function clickCanvas() {
 }
   */
   
-  /*
-    //Tar bort allt förutom de 13 sista tecken i url-string
-    var sliceUrlParams = baseUrl.slice(-15);
-    //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
-    var vFromSlice = sliceUrlParams.slice(2, 3);
-    var xFromSlice = sliceUrlParams.slice(5, 9);
-    var yFromSlice = sliceUrlParams.slice(11, 15);
-  
-  document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
-  
-  */
 }
 
 </script> 
