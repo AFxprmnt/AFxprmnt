@@ -20,6 +20,8 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 <p id="xFromUrl"></p>
 
+<p id="testText2"></p>
+
 
 <script>
 var baseUrl = window.location.href;
@@ -56,9 +58,10 @@ function urlDrawOnload() {
     //Style cirkelns innehåll
     ctx.fillStyle = "rgba(255,0,0,0.3)";
     ctx.fill();
+
+    var baseUrl = window.location.href.slice(0, -14);
     
   //} else if(regxRes == false) {
-		//document.getElementById("xFromUrl").innerHTML = regxRes;
   }
 	
 }
@@ -111,12 +114,11 @@ function clickCanvas() {
   //Tar bort allt förutom de 13 sista tecken i url-string
   var sliceUrlParams = newUrl.slice(-13);
   //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
-  var vFromSlice = sliceUrlParams.slice(2,3);
+  var vFromSlice = sliceUrlParams.slice(2, 3);
   var xFromSlice = sliceUrlParams.slice(5, 8);
   var yFromSlice = sliceUrlParams.slice(10, 13);
   
   document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
-  
   
 }
 
