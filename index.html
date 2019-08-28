@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<body onload="urlDrawOnload()">
+<body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center;">
 
-<select id="vSelect" onchange="bytVaning()">
+<select id="vSelect" onchange="bytVaning()" style="text-align: center;">
   <option value="4">Våning 4</option>
   <option value="5">Våning 5</option>
 </select>
 
-<canvas id="myCanvas" width="600" height="300" style="border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 600px 300px;" onclick="clickCanvas()">
+<canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <br>
@@ -33,6 +33,9 @@ var regxRes = regxPatt.test(baseUrl);
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
+var canvasWidth = 1440;
+var canvasHeight = 720;
+
 //Aktiveras onload 
 function urlDrawOnload() {
   
@@ -40,20 +43,20 @@ function urlDrawOnload() {
   if(regxRes == true) {
     
     //Tar bort allt förutom de 13 sista tecken i url-string
-    var sliceUrlParams = baseUrl.slice(-13);
+    var sliceUrlParams = baseUrl.slice(-15);
     //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
     var vFromSlice = sliceUrlParams.slice(2,3);
-    var xFromSlice = sliceUrlParams.slice(5, 8);
-    var yFromSlice = sliceUrlParams.slice(10, 13);
+    var xFromSlice = sliceUrlParams.slice(5, 9);
+    var yFromSlice = sliceUrlParams.slice(11, 15);
     
     //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
     document.getElementById('vSelect').selectedIndex = vFromSlice - 4;
     
     //Rensar föregående klick innan
-    ctx.clearRect(0, 0, 600, 300);
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     //Börjar rita cirkeln
     ctx.beginPath();
-    ctx.arc(xFromSlice,yFromSlice,20,0,2*Math.PI);
+    ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
     //Style cirkelns utkant
     ctx.strokeStyle = "rgba(255,0,0,0.3)";
     ctx.stroke();
@@ -73,9 +76,9 @@ function urlDrawOnload() {
 //Dropdown-script som byter bild på canvas mellan v4 & v5
 function bytVaning() {
 	if(document.getElementById('vSelect').value == "5") {
-  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; 			background: url('https://i.imgur.com/aY089ox.png'); background-size: 600px 300px;");
+  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/aY089ox.png'); background-size: 1440px 720px;");
 	} else if(document.getElementById('vSelect').value == "4") {
-  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 600px 300px;");
+  	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;");
     }
 }
 
@@ -87,10 +90,10 @@ function clickCanvas() {
     return { x: event.offsetX, y: event.offsetY };
 	}
   //Rensar föregående klick innan
-  ctx.clearRect(0, 0, 600, 300);
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   //Börjar rita cirkeln
   ctx.beginPath();
-  ctx.arc(event.offsetX,event.offsetY,20,0,2*Math.PI);
+  ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
   //Style cirkelns utkant
   ctx.strokeStyle = "rgba(255,0,0,0.3)";
   ctx.stroke();
@@ -105,13 +108,13 @@ function clickCanvas() {
   var vaningAktiv = document.getElementById('vSelect').value;
   
   //Skapar x och y variabler som alltid har 3 siffror med hjälp av nollor
-  var pad = "000";
+  var pad = "0000";
   var xZerofilled = (pad+event.offsetX).slice(-pad.length);
   var yZerofilled = (pad+event.offsetY).slice(-pad.length);
   
   //Om url innehåller x=: Skapar en ny url med de valda koordinaterna som parametrar
   if(regxRes == true) {
-  	var clearedUrl = baseUrl.slice(0, -14);
+  	var clearedUrl = baseUrl.slice(0, -16);
   	var newUrl = clearedUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
   } else if(regxRes == false) {
   	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
@@ -121,12 +124,12 @@ function clickCanvas() {
   
   //document.getElementById("testText2").innerHTML = urlDrawOnload();
   
-  //Tar bort allt förutom de 13 sista tecken i url-string
-  var sliceUrlParams = newUrl.slice(-13);
-  //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
-  var vFromSlice = sliceUrlParams.slice(2, 3);
-  var xFromSlice = sliceUrlParams.slice(5, 8);
-  var yFromSlice = sliceUrlParams.slice(10, 13);
+    //Tar bort allt förutom de 13 sista tecken i url-string
+    var sliceUrlParams = baseUrl.slice(-15);
+    //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
+    var vFromSlice = sliceUrlParams.slice(2, 3);
+    var xFromSlice = sliceUrlParams.slice(5, 9);
+    var yFromSlice = sliceUrlParams.slice(11, 15);
   
   document.getElementById("xFromUrl").innerHTML = "Test: " + sliceUrlParams + "<br>x from slice: " + xFromSlice + "<br>y from slice: " + yFromSlice + "<br>v from slice: " + vFromSlice;
   
