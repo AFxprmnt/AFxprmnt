@@ -16,6 +16,11 @@
   <p id="koordinater"></p>
 
   <p id="urlText"></p>
+  
+  <!--
+  <input type="text" value="" id="urlInput" style="width: 280px;">
+  <button onclick="kopieraUrl()">Kopiera</button>
+  -->
 
 </div>
 
@@ -35,7 +40,6 @@ var ctx = c.getContext("2d");
 var canvasWidth = 1440;
 var canvasHeight = 720;
 
-
 //var background = new Image();
 //background.src = "https://i.imgur.com/300wJkp.png";
 //background.width = 1440;
@@ -45,7 +49,7 @@ var canvasHeight = 720;
   //ctx.drawImage(background,0,0);   
 //}
 
-document.getElementById("våningstext").innerHTML = "Våning 4";
+document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
 
 //Aktiveras onload 
 function urlDrawOnload() {
@@ -84,10 +88,10 @@ function urlDrawOnload() {
 function bytVaning() {
 	if(document.getElementById('vSelect').value == "5") {
   	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/aY089ox.png'); background-size: 1440px 720px;");
-    document.getElementById("våningstext").innerHTML = "Våning 5";
+    document.getElementById("våningstext").innerHTML = "Våning " + parseInt(document.getElementById('vSelect').selectedIndex + 4);
 	} else if(document.getElementById('vSelect').value == "4") {
   	document.getElementById("myCanvas").setAttribute("style", "border:0px solid #d3d3d3; background: url('https://i.imgur.com/300wJkp.png'); background-size: 1440px 720px;");
-    document.getElementById("våningstext").innerHTML = "Våning 4";
+    document.getElementById("våningstext").innerHTML = "Våning " + parseInt(document.getElementById('vSelect').selectedIndex + 4);
     }
 }
 
@@ -130,6 +134,18 @@ function clickCanvas() {
   }
 
 	document.getElementById("urlText").innerHTML = "<br>Kopiera och skicka följande URL:<br><br>" + newUrl;
+  
+  
+  /*
+  document.getElementById("urlInput").value = newUrl;
+  
+  function kopieraUrl() {
+    var copyText = document.getElementById("urlInput").value;
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+}
+  */
   
     //Tar bort allt förutom de 13 sista tecken i url-string
     var sliceUrlParams = baseUrl.slice(-15);
