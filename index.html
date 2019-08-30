@@ -1,163 +1,209 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-    body {
-      font-family: OpenSans, sans-serif;
-    }
+    <head>
+        <style>
 
-    #copyClipButton {
-      width: 100px;
-    }
+        body {
+            font-family: OpenSans, sans-serif;
+            display: block; 
+            width: 100%; 
+            text-align: center; 
+        }
 
-    </style>
-  </head>
-<body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center; ">
+        #infoContainer {
+            display: block; 
+            width: 400px; 
+            height: 200px; 
+            margin: auto;
 
-<div id="infoContainer" style="display: block; width: 400px; height: 200px; margin: auto; ">
+            /* border:1px solid blue; */
+        }
 
-  <select id="vSelect" onchange="bytVaning()" style="text-align: center;">
-    <option value="4">Våning 4</option>
-    <option value="5">Våning 5</option>
-  </select>
+        #vSelect{
+            /* visibility: hidden; */
+            text-align: center;
+        }
 
-  <br>
+        #våningstext{
+            font-size: 36px;
+        }
 
-  <p id="våningstext" style="font-size: 36px;"></p>
+        #copyClipButton {
+            width: 100px;
+        }
 
-  <p id="urlText"></p>
-  
-<div id="copyDiv" style="display: none;">
-  <p>Kopiera och skicka följande URL:</p>
-  <input type="text" value="" id="urlInput" style="width: 280px;"> 
-  <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
-</div>
+        #myCanvas {
+            margin: 20px auto;
 
-</div>
+            /* border:1px solid red; */
+        }
 
-<canvas id="myCanvas" width="1440" height="720" style="border:0px solid #d3d3d3; margin: 20px auto; background: url('https://i.imgur.com/zG8Dkd7.png'); background-size: 1440px 720px;" onclick="clickCanvas()">
-Your browser does not support the HTML5 canvas tag.</canvas>
+        #copyDiv{
+            visibility: hidden;
 
+            /* border:1px solid red; */
+        }
 
-<script>
-var baseUrl = window.location.href;
-var newUrl = "";
-//Kollar om url:en innehåller x=
-var regxPatt = new RegExp("x=");
-var regxRes = regxPatt.test(baseUrl);
+        #copyDiv input{
+            width: 280px;
+        }
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
+        </style>
 
-var canvasWidth = 1440;
-var canvasHeight = 720;
+    </head>
 
-var background = new Image();
-background.src = "https://i.imgur.com/zG8Dkd7.png";
+    <body onload="urlDrawOnload()">
 
-background.onload = function(){
-  ctx.drawImage(background,0,0);   
-}
+        <div id="infoContainer">
 
-document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
+            <select id="vSelect" onchange="bytVaning()">
+                <option value="4">Våning 4</option>
+                <option value="5">Våning 5</option>
+            </select>
 
-//Aktiveras onload 
-function urlDrawOnload() {
-  
-  //Om url innehåller x=, slicea ut dess variabler
-  if(regxRes == true) {
-    
-    //Tar bort allt förutom de 13 sista tecken i url-string
-    var sliceUrlParams = baseUrl.slice(-15);
-    //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
-    var vFromSlice = sliceUrlParams.slice(2,3);
-    var xFromSlice = sliceUrlParams.slice(5, 9);
-    var yFromSlice = sliceUrlParams.slice(11, 15);
-    
-    //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
-    document.getElementById('vSelect').selectedIndex = vFromSlice - 4;
-    document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
-    
-    //Rensar föregående klick innan
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.drawImage(background,0,0);  
-    //Börjar rita cirkeln
-    ctx.beginPath();
-    ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
-    //Style cirkelns utkant
-    ctx.strokeStyle = "rgba(255,0,0,0.3)";
-    ctx.stroke();
-    //Style cirkelns innehåll
-    ctx.fillStyle = "rgba(255,0,0,0.3)";
-    ctx.fill();
+            <br>
 
-  }
-	
-}
+            <p id="våningstext"></p>
+
+            <p id="urlText"></p>
+
+            <div id="copyDiv">
+                <p>Kopiera och skicka följande URL:</p>
+                <input type="text" value="" id="urlInput"> 
+                <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
+            </div>
+
+        </div>
+
+        <canvas id="myCanvas" onclick="clickCanvas()" width="1440px" height="720px" >
+        Your browser does not support the HTML5 canvas tag.</canvas>
 
 
-//Dropdown-script som byter bild på canvas mellan v4 & v5
-function bytVaning() {
-	if(document.getElementById('vSelect').value == "5") {
-  	background.src = "https://i.imgur.com/0riV4cW.png";
-    document.getElementById("våningstext").innerHTML = "Våning 5";
-	} else if(document.getElementById('vSelect').value == "4") {
-  	background.src = "https://i.imgur.com/zG8Dkd7.png";
-    document.getElementById("våningstext").innerHTML = "Våning 4";
-    }
-}
+        <script>
+            var baseUrl = window.location.href;
+            var newUrl = "";
+            
+            //Kollar om url:en innehåller x=
+            var regxPatt = new RegExp("x=");
+            var regxRes = regxPatt.test(baseUrl);
+            
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            
+            var canvasWidth = 1440;
+            var canvasHeight = 720;
+            
+            var background = new Image();
+            background.src = "images/plan4.png";
+            background.onload = function(){
+                ctx.drawImage(background,0,0);   
+            }
+            
+            document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
+            
+            //Aktiveras onload 
+            function urlDrawOnload() {
 
-//Aktiveras vid klick på canvas
-function clickCanvas() {
-	
-  //Hämtar koordinater för klicket
-  function getRelativeCoords(event) {
-    return { x: event.offsetX, y: event.offsetY };
-	}
-  //Rensar föregående klick innan
-  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-  ctx.drawImage(background,0,0);  
-  //Börjar rita cirkeln
-  ctx.beginPath();
-  ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
-  //Style cirkelns utkant
-  ctx.strokeStyle = "rgba(255,0,0,0.3)";
-  ctx.stroke();
-  //Style cirkelns innehåll
-  ctx.fillStyle = "rgba(255,0,0,0.3)";
-	ctx.fill();
-  
-  //Skapar url med koordinater i parametrar
-  var vaningAktiv = document.getElementById('vSelect').value;
-  
-  //Skapar x och y variabler som alltid har 3 siffror med hjälp av nollor
-  var pad = "0000";
-  var xZerofilled = (pad+event.offsetX).slice(-pad.length);
-  var yZerofilled = (pad+event.offsetY).slice(-pad.length);
-  
-  //Om url innehåller x=: Skapar en ny url med de valda koordinaterna som parametrar
-  if(regxRes == true) {
-  	var clearedUrl = baseUrl.slice(0, -16);
-  	var newUrl = clearedUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
-  } else if(regxRes == false) {
-  	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
-  }
+                //Om url innehåller x=, slicea ut dess variabler
+                if(regxRes == true) {
 
-  document.getElementById("copyDiv").style.display = "block";
+                    //Tar bort allt förutom de 13 sista tecken i url-string
+                    var sliceUrlParams = baseUrl.slice(-15);
+                    //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
+                    var vFromSlice = sliceUrlParams.slice(2, 3);
+                    var xFromSlice = sliceUrlParams.slice(5, 9);
+                    var yFromSlice = sliceUrlParams.slice(11, 15);
 
-	document.getElementById("urlInput").value = newUrl;
-  
-}
+                    //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
+                    document.getElementById('vSelect').selectedIndex = vFromSlice - 4;
+                    document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
 
-function kopieraUrl() {
-  var copyText = document.getElementById("urlInput");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-  //alert("Copied the text: " + copyText.value);
-}
+                    // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
+                    document.getElementById("vSelect").style.visibility = "hidden";
 
-</script> 
+                    //Rensar föregående klick innan
+                    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                    ctx.drawImage(background,0,0);  
+                    //Börjar rita cirkeln
+                    ctx.beginPath();
+                    ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
+                    //Style cirkelns utkant
+                    ctx.strokeStyle = "rgba(255,0,0,0.3)";
+                    ctx.stroke();
+                    //Style cirkelns innehåll
+                    ctx.fillStyle = "rgba(255,0,0,0.3)";
+                    ctx.fill();
 
-</body>
+                }
+
+            }
+            //Dropdown-script som byter bild på canvas mellan v4 & v5
+            function bytVaning() {
+                if(document.getElementById('vSelect').value == "5") {
+                background.src = "images/plan5.png";
+                document.getElementById("våningstext").innerHTML = "Våning 5";
+                document.getElementById("urlInput").value = "";
+                } 
+                else if(document.getElementById('vSelect').value == "4") {
+                background.src = "images/plan4.png";
+                document.getElementById("våningstext").innerHTML = "Våning 4";
+                document.getElementById("urlInput").value = "";
+                }
+            }
+            //Aktiveras vid klick på canvas
+            function clickCanvas() {
+
+                //Hämtar koordinater för klicket
+                function getRelativeCoords(event) {
+                    return { x: event.offsetX, y: event.offsetY };
+                }
+
+                //Rensar föregående klick innan
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                ctx.drawImage(background,0,0);  
+                //Börjar rita cirkeln
+                ctx.beginPath();
+                ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
+                //Style cirkelns utkant
+                ctx.strokeStyle = "rgba(255,0,0,0.3)";
+                ctx.stroke();
+                //Style cirkelns innehåll
+                ctx.fillStyle = "rgba(255,0,0,0.3)";
+                ctx.fill();
+
+                //Skapar url med koordinater i parametrar
+                var vaningAktiv = document.getElementById('vSelect').value;
+
+                //Skapar x och y variabler som alltid har 3 siffror med hjälp av nollor
+                var pad = "0000";
+                var xZerofilled = (pad+event.offsetX).slice(-pad.length);
+                var yZerofilled = (pad+event.offsetY).slice(-pad.length);
+
+                //Om url innehåller x=: Skapar en ny url med de valda koordinaterna som parametrar
+                if(regxRes == true) {
+                    var clearedUrl = baseUrl.slice(0, -16);
+                    var newUrl = clearedUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
+                } 
+                else if(regxRes == false) {
+                    var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
+                }
+                
+                // Visar dropdown-meny och inputfält när man klickat på canvas
+                document.getElementById("vSelect").style.visibility = "visible";
+                document.getElementById("copyDiv").style.visibility = "visible";
+
+                document.getElementById("urlInput").value = newUrl;
+
+            }
+            
+            function kopieraUrl() {
+                var copyText = document.getElementById("urlInput");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999)
+                document.execCommand("copy");
+                //alert("Copied the text: " + copyText.value);
+            }
+        </script> 
+
+    </body>
 </html>
