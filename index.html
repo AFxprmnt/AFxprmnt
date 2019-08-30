@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <style>
+    body {
+      font-family: OpenSans, sans-serif;
+    }
+
+    #copyClipButton {
+      width: 100px;
+    }
+
+    </style>
+  </head>
 <body onload="urlDrawOnload()" style="display: block; width: 100%; text-align: center; ">
 
 <div id="infoContainer" style="display: block; width: 400px; height: 200px; margin: auto; ">
@@ -13,16 +25,13 @@
 
   <p id="våningstext" style="font-size: 36px;"></p>
 
-  <!--
-  <p id="koordinater"></p>
-  -->
-
   <p id="urlText"></p>
   
-  <!--
-  <input type="text" value="" id="urlInput" style="width: 280px;">
-  <button onclick="kopieraUrl()">Kopiera</button>
-  -->
+<div id="copyDiv" style="display: none;">
+  <p>Kopiera och skicka följande URL:</p>
+  <input type="text" value="" id="urlInput" style="width: 280px;"> 
+  <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
+</div>
 
 </div>
 
@@ -32,6 +41,7 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
 var baseUrl = window.location.href;
+var newUrl = "";
 //Kollar om url:en innehåller x=
 var regxPatt = new RegExp("x=");
 var regxRes = regxPatt.test(baseUrl);
@@ -117,9 +127,6 @@ function clickCanvas() {
   ctx.fillStyle = "rgba(255,0,0,0.3)";
 	ctx.fill();
   
-  //Visar koordinaterna i textelementet
-  //document.getElementById("koordinater").innerHTML = "X = " + event.offsetX + "<br>Y = " + event.offsetY;
-  
   //Skapar url med koordinater i parametrar
   var vaningAktiv = document.getElementById('vSelect').value;
   
@@ -136,20 +143,18 @@ function clickCanvas() {
   	var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
   }
 
-	document.getElementById("urlText").innerHTML = "Kopiera och skicka följande URL:<br><br>" + newUrl;
+  document.getElementById("copyDiv").style.display = "block";
+
+	document.getElementById("urlInput").value = newUrl;
   
-  
-  /*
-  document.getElementById("urlInput").value = newUrl;
-  
-  function kopieraUrl() {
-    var copyText = document.getElementById("urlInput").value;
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-    document.execCommand("copy");
 }
-  */
-  
+
+function kopieraUrl() {
+  var copyText = document.getElementById("urlInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  //alert("Copied the text: " + copyText.value);
 }
 
 </script> 
