@@ -13,16 +13,48 @@
 
         #infoContainer {
             display: block; 
-            width: 400px; 
-            height: 200px; 
+            width: 1000px; 
+            height: 90px; 
             margin: auto;
+            text-align: center;
+
+            /* border:1px solid green; */
+        }
+
+        #vselectDiv {
+            display: inline-block;
+            margin-right: 40px;
+            width: 150px;
+            text-align: left;
 
             /* border:1px solid blue; */
         }
 
+        #vselectDiv label{
+            display: inline-block;
+            margin-bottom: 5px;
+
+            /* border:1px solid red; */
+        }
+
         #vSelect{
-            /* visibility: hidden; */
-            text-align: center;
+            font-size: 18px;
+            width: 150px;           
+        }
+
+        #instruktionerDiv {
+            display: inline-block;
+            position: absolute;
+            margin: 40px 0 0 50px;
+        }
+
+        #copyDiv{
+            visibility: hidden;
+            display: inline-block;
+            text-align: left;
+            padding: 5px;
+
+            /* border:1px solid red; */
         }
 
         #våningstext{
@@ -39,12 +71,6 @@
             /* border:1px solid red; */
         }
 
-        #copyDiv{
-            visibility: hidden;
-
-            /* border:1px solid red; */
-        }
-
         #copyDiv input{
             width: 280px;
         }
@@ -57,16 +83,17 @@
 
         <div id="infoContainer">
 
-            <select id="vSelect" onchange="bytVaning()">
-                <option value="4">Våning 4</option>
-                <option value="5">Våning 5</option>
-            </select>
+            <div id="vselectDiv">
+                <label for="vSelect">Välj våning</label>
+                <select id="vSelect" name="våning" onchange="bytVaning()">
+                    <option value="4">Våning 4</option>
+                    <option value="5">Våning 5</option>
+                </select>
+            </div>
 
-            <br>
-
-            <p id="våningstext"></p>
-
-            <p id="urlText"></p>
+            <div id="instruktionerDiv">
+                <p>Klicka på kartan för att markera en plats</p>
+            </div>
 
             <div id="copyDiv">
                 <p>Kopiera och skicka följande URL:</p>
@@ -116,10 +143,11 @@
 
                     //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
                     document.getElementById('vSelect').selectedIndex = vFromSlice - 4;
-                    document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
+                    //document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
 
                     // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
-                    document.getElementById("vSelect").style.visibility = "hidden";
+                    document.getElementById("vselectDiv").style.visibility = "hidden";
+                    document.getElementById("instruktionerDiv").style.display = "none";
 
                     if(vFromSlice == 5) {  
                         ctx.drawImage(background5,0,0);  
@@ -145,7 +173,7 @@
                 else if(regxRes == false) {
 
                     //Ger våningstext rätt värde
-                    document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
+                    //document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
                     //Ritar start-bakgrund (just nu våning 4)
                     ctx.drawImage(background4,0,0);
                 }
@@ -159,7 +187,7 @@
                 if(document.getElementById('vSelect').value == "5") {
 
                     //Byter våningstext
-                    document.getElementById("våningstext").innerHTML = "Våning 5";
+                    //document.getElementById("våningstext").innerHTML = "Våning 5";
                     //Rensar input-fältet
                     document.getElementById("urlInput").value = "";
                     //Ritar rätt bakgrund
@@ -168,7 +196,7 @@
                 else if(document.getElementById('vSelect').value == "4") {
 
                     //Byter våningstext
-                    document.getElementById("våningstext").innerHTML = "Våning 4";
+                    //document.getElementById("våningstext").innerHTML = "Våning 4";
                     //Rensar input-fältet
                     document.getElementById("urlInput").value = "";    
                     //Ritar rätt bakgrund
@@ -224,7 +252,8 @@
                 }
                 
                 // Visar dropdown-meny och inputfält när man klickat på canvas
-                document.getElementById("vSelect").style.visibility = "visible";
+                document.getElementById("vselectDiv").style.visibility = "visible";
+                document.getElementById("instruktionerDiv").style.display = "none";
                 document.getElementById("copyDiv").style.visibility = "visible";
 
                 //Fyller input-fält med genererad url
