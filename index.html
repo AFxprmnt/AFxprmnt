@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
     <head>
+        <title>HK Share Location (Alpha)</title>
         <style>
 
         body {
@@ -75,7 +76,7 @@
 
         </div>
 
-        <canvas id="myCanvas" onclick="clickCanvas()" width="1440px" height="720px" >
+        <canvas id="myCanvas" onclick="clickCanvas()" width="1440" height="800" >
         Your browser does not support the HTML5 canvas tag.</canvas>
 
 
@@ -90,21 +91,20 @@
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
             
+            //Skapar variabler för canvas-storleken att användas i scriptet.
             var canvasWidth = 1440;
-            var canvasHeight = 720;
+            var canvasHeight = 800;
             
-            var background = new Image();
-            background.src = "images/plan4.png";
-            background.onload = function(){
-                ctx.drawImage(background,0,0);   
-            }
+            //Sätter variabler för respektive bakgrundsbild, men ritar ingen bakgrund i detta stadie (viktigt)
+            var background4 = new Image();
+            background4.src = "images/plan4.jpg";
+            var background5 = new Image();
+            background5.src = "images/plan5.jpg";
             
-            document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
-            
-            //Aktiveras onload 
+            //Aktiveras vid body-onload 
             function urlDrawOnload() {
 
-                //Om url innehåller x=, slicea ut dess variabler
+                //Beroende på om url innehåller x= (parametrar) eller inte, ritas cirkel eller inte
                 if(regxRes == true) {
 
                     //Tar bort allt förutom de 13 sista tecken i url-string
@@ -121,9 +121,14 @@
                     // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
                     document.getElementById("vSelect").style.visibility = "hidden";
 
-                    //Rensar föregående klick innan
-                    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                    ctx.drawImage(background,0,0);  
+                    if(vFromSlice == 5) {  
+                        ctx.drawImage(background5,0,0);  
+                        
+                    } 
+                    else if(vFromSlice == 4) {
+                        ctx.drawImage(background4,0,0);
+                    }
+
                     //Börjar rita cirkeln
                     ctx.beginPath();
                     ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
@@ -136,31 +141,60 @@
 
                 }
 
+                //Om url INTE innehåller parametrar, alltså startläge
+                else if(regxRes == false) {
+
+                    //Ger våningstext rätt värde
+                    document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
+                    //Ritar start-bakgrund (just nu våning 4)
+                    ctx.drawImage(background4,0,0);
+                }
+
             }
-            //Dropdown-script som byter bild på canvas mellan v4 & v5
+            
+            //Dropdown-script, aktiveras vid byte av dropdown-option, som byter bild på canvas mellan v4 & v5
             function bytVaning() {
+
+                //Beroende på vilken våning som valts: byts våningstext, rensar input-fält och ritar respektive bakgrund
                 if(document.getElementById('vSelect').value == "5") {
-                background.src = "images/plan5.png";
-                document.getElementById("våningstext").innerHTML = "Våning 5";
-                document.getElementById("urlInput").value = "";
+
+                    //Byter våningstext
+                    document.getElementById("våningstext").innerHTML = "Våning 5";
+                    //Rensar input-fältet
+                    document.getElementById("urlInput").value = "";
+                    //Ritar rätt bakgrund
+                    ctx.drawImage(background5,0,0); 
                 } 
                 else if(document.getElementById('vSelect').value == "4") {
-                background.src = "images/plan4.png";
-                document.getElementById("våningstext").innerHTML = "Våning 4";
-                document.getElementById("urlInput").value = "";
+
+                    //Byter våningstext
+                    document.getElementById("våningstext").innerHTML = "Våning 4";
+                    //Rensar input-fältet
+                    document.getElementById("urlInput").value = "";    
+                    //Ritar rätt bakgrund
+                    ctx.drawImage(background4,0,0);      
                 }
             }
+
             //Aktiveras vid klick på canvas
             function clickCanvas() {
-
+                
                 //Hämtar koordinater för klicket
                 function getRelativeCoords(event) {
                     return { x: event.offsetX, y: event.offsetY };
                 }
-
-                //Rensar föregående klick innan
+                
+                //Rensar föregående cirkel samt bakgrund
                 ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                ctx.drawImage(background,0,0);  
+                
+                //Beroende på vilken våning det är så ritar den bakgrunden igen
+                if(document.getElementById('vSelect').value == "5") {
+                    ctx.drawImage(background5,0,0); 
+                } 
+                else if(document.getElementById('vSelect').value == "4") {
+                    ctx.drawImage(background4,0,0);      
+                }
+
                 //Börjar rita cirkeln
                 ctx.beginPath();
                 ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
@@ -170,6 +204,7 @@
                 //Style cirkelns innehåll
                 ctx.fillStyle = "rgba(255,0,0,0.3)";
                 ctx.fill();
+                
 
                 //Skapar url med koordinater i parametrar
                 var vaningAktiv = document.getElementById('vSelect').value;
@@ -192,17 +227,19 @@
                 document.getElementById("vSelect").style.visibility = "visible";
                 document.getElementById("copyDiv").style.visibility = "visible";
 
+                //Fyller input-fält med genererad url
                 document.getElementById("urlInput").value = newUrl;
 
             }
             
+            //Aktiveras vid klick på "kopiera"-knapp. Kopierar innehåll av input-fältet (måste vara input-fält)
             function kopieraUrl() {
                 var copyText = document.getElementById("urlInput");
                 copyText.select();
                 copyText.setSelectionRange(0, 99999)
                 document.execCommand("copy");
-                //alert("Copied the text: " + copyText.value);
             }
+
         </script> 
 
     </body>
