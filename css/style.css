@@ -1,0 +1,70 @@
+body {
+    font-family: OpenSans, sans-serif;
+    display: block; 
+    width: 100%; 
+    text-align: center; 
+}
+
+#infoContainer {
+    display: block; 
+    width: 1000px; 
+    height: 90px; 
+    margin: auto;
+    text-align: center;
+
+    /* border:1px solid green; */
+}
+
+#vselectDiv {
+    display: inline-block;
+    margin-right: 40px;
+    width: 150px;
+    text-align: left;
+
+    /* border:1px solid blue; */
+}
+
+#vselectDiv label{
+    display: inline-block;
+    margin-bottom: 5px;
+
+    /* border:1px solid red; */
+}
+
+#vSelect{
+    font-size: 18px;
+    width: 150px;           
+}
+
+#instruktionerDiv {
+    display: inline-block;
+    position: absolute;
+    margin: 40px 0 0 50px;
+}
+
+#copyDiv{
+    visibility: hidden;
+    display: inline-block;
+    text-align: left;
+    padding: 5px;
+
+    /* border:1px solid red; */
+}
+
+#våningstext{
+    font-size: 36px;
+}
+
+#copyClipButton {
+    width: 100px;
+}
+
+#myCanvas {
+    margin: 20px auto;
+
+    /* border:1px solid red; */
+}
+
+#copyDiv input{
+    width: 280px;
+}

@@ -1,275 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-    <head>
-        <title>HK Share Location (Alpha)</title>
-        <style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+     integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+    
 
-        body {
-            font-family: OpenSans, sans-serif;
-            display: block; 
-            width: 100%; 
-            text-align: center; 
-        }
+    <title>Hitta i HK (alpha)</title>
 
-        #infoContainer {
-            display: block; 
-            width: 1000px; 
-            height: 90px; 
-            margin: auto;
-            text-align: center;
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-            /* border:1px solid green; */
-        }
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
 
-        #vselectDiv {
-            display: inline-block;
-            margin-right: 40px;
-            width: 150px;
-            text-align: left;
+  <body onload="urlDrawOnload()">
 
-            /* border:1px solid blue; */
-        }
-
-        #vselectDiv label{
-            display: inline-block;
-            margin-bottom: 5px;
-
-            /* border:1px solid red; */
-        }
-
-        #vSelect{
-            font-size: 18px;
-            width: 150px;           
-        }
-
-        #instruktionerDiv {
-            display: inline-block;
-            position: absolute;
-            margin: 40px 0 0 50px;
-        }
-
-        #copyDiv{
-            visibility: hidden;
-            display: inline-block;
-            text-align: left;
-            padding: 5px;
-
-            /* border:1px solid red; */
-        }
-
-        #våningstext{
-            font-size: 36px;
-        }
-
-        #copyClipButton {
-            width: 100px;
-        }
-
-        #myCanvas {
-            margin: 20px auto;
-
-            /* border:1px solid red; */
-        }
-
-        #copyDiv input{
-            width: 280px;
-        }
-
-        </style>
-
-    </head>
-
-    <body onload="urlDrawOnload()">
-
-        <div id="infoContainer">
-
-            <div id="vselectDiv">
-                <label for="vSelect">Välj våning</label>
-                <select id="vSelect" name="våning" onchange="bytVaning()">
-                    <option value="4">Våning 4</option>
-                    <option value="5">Våning 5</option>
-                </select>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Hitta i HK</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Dela plats på karta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hitta rum</a>
+                    </li>
+                </ul>
             </div>
-
-            <div id="instruktionerDiv">
-                <p>Klicka på kartan för att markera en plats</p>
-            </div>
-
-            <div id="copyDiv">
-                <p>Kopiera och skicka följande URL:</p>
-                <input type="text" value="" id="urlInput"> 
-                <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
-            </div>
-
         </div>
+    </nav>
 
-        <canvas id="myCanvas" onclick="clickCanvas()" width="1440" height="800" >
-        Your browser does not support the HTML5 canvas tag.</canvas>
+    <main role="main" class="container">
 
-
-        <script>
-            var baseUrl = window.location.href;
-            var newUrl = "";
+      <div class="container">
+        <!-- <h1>Anställa kandidater som är under utbildning</h1> -->
+        <p class="sr-only">Denna sida är i dagsläget dåligt tillgänglighetsanpassad. Jag ber om ursäkt.</p>
+        
+        <section>
             
-            //Kollar om url:en innehåller x=
-            var regxPatt = new RegExp("x=");
-            var regxRes = regxPatt.test(baseUrl);
-            
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-            
-            //Skapar variabler för canvas-storleken att användas i scriptet.
-            var canvasWidth = 1440;
-            var canvasHeight = 800;
-            
-            //Sätter variabler för respektive bakgrundsbild, men ritar ingen bakgrund i detta stadie (viktigt)
-            var background4 = new Image();
-            background4.src = "images/plan4.jpg";
-            var background5 = new Image();
-            background5.src = "images/plan5.jpg";
-            
-            //Aktiveras vid body-onload 
-            function urlDrawOnload() {
+            <div id="infoContainer">
 
-                //Beroende på om url innehåller x= (parametrar) eller inte, ritas cirkel eller inte
-                if(regxRes == true) {
+                <div id="vselectDiv">
+                    <label for="vSelect">Välj plan</label>
+                    <select id="vSelect" name="plan" onchange="bytVaning()">
+                        <option value="2">Plan 2</option>
+                        <option value="3">Plan 3</option>
+                        <option value="4">Plan 4</option>
+                        <option value="5">Plan 5</option>
+                        <option value="6">Plan 6</option>
+                        <option value="7">Plan 7</option>
+                        <option value="8">Plan 8</option>
+                        <option value="9">Plan 9</option>
+                    </select>
+                </div>
+     
+                <div id="instruktionerDiv">
+                    <p>Klicka på kartan för att markera en plats</p>
+                </div>
+    
+                <div id="copyDiv">
+                    <p>Kopiera och skicka följande URL:</p>
+                    <input type="text" value="" id="urlInput"> 
+                    <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
+                </div>
+    
+            </div>
+    
+            <canvas id="myCanvas" onclick="clickCanvas()" width="1440" height="800" >
+            Your browser does not support the HTML5 canvas tag.</canvas>
+        </section>
+      </div>
 
-                    //Tar bort allt förutom de 13 sista tecken i url-string
-                    var sliceUrlParams = baseUrl.slice(-15);
-                    //Plockar ut värdena baserat på deras position i ordningen - hårdkodat
-                    var vFromSlice = sliceUrlParams.slice(2, 3);
-                    var xFromSlice = sliceUrlParams.slice(5, 9);
-                    var yFromSlice = sliceUrlParams.slice(11, 15);
 
-                    //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
-                    document.getElementById('vSelect').selectedIndex = vFromSlice - 4;
-                    //document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
+    </main><!-- /.container -->
 
-                    // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
-                    document.getElementById("vselectDiv").style.visibility = "hidden";
-                    document.getElementById("instruktionerDiv").style.display = "none";
 
-                    if(vFromSlice == 5) {  
-                        ctx.drawImage(background5,0,0);  
-                        
-                    } 
-                    else if(vFromSlice == 4) {
-                        ctx.drawImage(background4,0,0);
-                    }
-
-                    //Börjar rita cirkeln
-                    ctx.beginPath();
-                    ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
-                    //Style cirkelns utkant
-                    ctx.strokeStyle = "rgba(255,0,0,0.3)";
-                    ctx.stroke();
-                    //Style cirkelns innehåll
-                    ctx.fillStyle = "rgba(255,0,0,0.3)";
-                    ctx.fill();
-
-                }
-
-                //Om url INTE innehåller parametrar, alltså startläge
-                else if(regxRes == false) {
-
-                    //Ger våningstext rätt värde
-                    //document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
-                    //Ritar start-bakgrund (just nu våning 4)
-                    ctx.drawImage(background4,0,0);
-                }
-
-            }
-            
-            //Dropdown-script, aktiveras vid byte av dropdown-option, som byter bild på canvas mellan v4 & v5
-            function bytVaning() {
-
-                //Beroende på vilken våning som valts: byts våningstext, rensar input-fält och ritar respektive bakgrund
-                if(document.getElementById('vSelect').value == "5") {
-
-                    //Byter våningstext
-                    //document.getElementById("våningstext").innerHTML = "Våning 5";
-                    //Rensar input-fältet
-                    document.getElementById("urlInput").value = "";
-                    //Ritar rätt bakgrund
-                    ctx.drawImage(background5,0,0); 
-                } 
-                else if(document.getElementById('vSelect').value == "4") {
-
-                    //Byter våningstext
-                    //document.getElementById("våningstext").innerHTML = "Våning 4";
-                    //Rensar input-fältet
-                    document.getElementById("urlInput").value = "";    
-                    //Ritar rätt bakgrund
-                    ctx.drawImage(background4,0,0);      
-                }
-            }
-
-            //Aktiveras vid klick på canvas
-            function clickCanvas() {
-                
-                //Hämtar koordinater för klicket
-                function getRelativeCoords(event) {
-                    return { x: event.offsetX, y: event.offsetY };
-                }
-                
-                //Rensar föregående cirkel samt bakgrund
-                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                
-                //Beroende på vilken våning det är så ritar den bakgrunden igen
-                if(document.getElementById('vSelect').value == "5") {
-                    ctx.drawImage(background5,0,0); 
-                } 
-                else if(document.getElementById('vSelect').value == "4") {
-                    ctx.drawImage(background4,0,0);      
-                }
-
-                //Börjar rita cirkeln
-                ctx.beginPath();
-                ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
-                //Style cirkelns utkant
-                ctx.strokeStyle = "rgba(255,0,0,0.3)";
-                ctx.stroke();
-                //Style cirkelns innehåll
-                ctx.fillStyle = "rgba(255,0,0,0.3)";
-                ctx.fill();
-                
-
-                //Skapar url med koordinater i parametrar
-                var vaningAktiv = document.getElementById('vSelect').value;
-
-                //Skapar x och y variabler som alltid har 3 siffror med hjälp av nollor
-                var pad = "0000";
-                var xZerofilled = (pad+event.offsetX).slice(-pad.length);
-                var yZerofilled = (pad+event.offsetY).slice(-pad.length);
-
-                //Om url innehåller x=: Skapar en ny url med de valda koordinaterna som parametrar
-                if(regxRes == true) {
-                    var clearedUrl = baseUrl.slice(0, -16);
-                    var newUrl = clearedUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
-                } 
-                else if(regxRes == false) {
-                    var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
-                }
-                
-                // Visar dropdown-meny och inputfält när man klickat på canvas
-                document.getElementById("vselectDiv").style.visibility = "visible";
-                document.getElementById("instruktionerDiv").style.display = "none";
-                document.getElementById("copyDiv").style.visibility = "visible";
-
-                //Fyller input-fält med genererad url
-                document.getElementById("urlInput").value = newUrl;
-
-            }
-            
-            //Aktiveras vid klick på "kopiera"-knapp. Kopierar innehåll av input-fältet (måste vara input-fält)
-            function kopieraUrl() {
-                var copyText = document.getElementById("urlInput");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999)
-                document.execCommand("copy");
-            }
-
-        </script> 
-
-    </body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jsfile.js"></script>
+  </body>
 </html>
