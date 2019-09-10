@@ -15,18 +15,25 @@ var canvasHeight = 640;
 //Sätter variabler för respektive bakgrundsbild, men ritar ingen bakgrund i detta stadie (viktigt)
 var background2 = new Image();
 background2.src = "images/plan2.jpg";
+
 var background3 = new Image();
 background3.src = "images/plan3.jpg";
+
 var background4 = new Image();
 background4.src = "images/plan4.jpg";
+
 var background5 = new Image();
 background5.src = "images/plan5.jpg";
+
 var background6 = new Image();
 background6.src = "images/plan6.jpg";
+
 var background7 = new Image();
 background7.src = "images/plan7.jpg";
+
 var background8 = new Image();
 background8.src = "images/plan8.jpg";
+
 var background9 = new Image();
 background9.src = "images/plan9.jpg";
 
@@ -44,7 +51,7 @@ function urlDrawOnload() {
         var yFromSlice = sliceUrlParams.slice(11, 15);
 
         //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
-        document.getElementById('vSelect').selectedIndex = vFromSlice;
+        document.getElementById('vSelect').selectedIndex = vFromSlice - 2;
         //document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
 
         // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
