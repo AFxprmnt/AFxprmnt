@@ -37,6 +37,10 @@ background8.src = "images/plan8.jpg";
 var background9 = new Image();
 background9.src = "images/plan9.jpg";
 
+//Sätter variabler för map marker
+var mapmarker = new Image();
+mapmarker.src = "images/map_marker_green.png";
+
 //Aktiveras vid body-onload 
 function urlDrawOnload() {
 
@@ -199,14 +203,16 @@ function clickCanvas() {
     }
 
     //Börjar rita cirkeln
-    ctx.beginPath();
+    /* ctx.beginPath();
     ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
     //Style cirkelns utkant
     ctx.strokeStyle = "rgba(255,0,0,0.3)";
     ctx.stroke();
     //Style cirkelns innehåll
     ctx.fillStyle = "rgba(255,0,0,0.3)";
-    ctx.fill();
+    ctx.fill(); */
+
+    ctx.drawImage(mapmarker,event.offsetX - 21,event.offsetY - 61);
     
 
     //Skapar url med koordinater i parametrar
@@ -233,6 +239,9 @@ function clickCanvas() {
 
     //Fyller input-fält med genererad url
     document.getElementById("urlInput").value = newUrl;
+
+    //TILLFÄLLIGA KOORDINATER FÖR ATT MAPPA UPP RUM FÖR KOMMANDE FUNKTION
+    document.getElementById("koordinaterText").innerHTML = "X: " + event.offsetX + " Y: " + event.offsetY;
 
 }
 
