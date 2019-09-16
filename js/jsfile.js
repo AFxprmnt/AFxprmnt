@@ -56,7 +56,6 @@ function urlDrawOnload() {
 
         //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
         document.getElementById('vSelect').selectedIndex = vFromSlice - 2;
-        //document.getElementById("våningstext").innerHTML = "Våning " + vFromSlice;
 
         // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
         document.getElementById("vselectDiv").style.visibility = "hidden";
@@ -88,23 +87,14 @@ function urlDrawOnload() {
             ctx.drawImage(background9,0,0);
         }
 
-        //Börjar rita cirkeln
-        ctx.beginPath();
-        ctx.arc(xFromSlice,yFromSlice,40,0,2*Math.PI);
-        //Style cirkelns utkant
-        ctx.strokeStyle = "rgba(255,0,0,0.3)";
-        ctx.stroke();
-        //Style cirkelns innehåll
-        ctx.fillStyle = "rgba(255,0,0,0.3)";
-        ctx.fill();
+        //Ritar map_marker och centrerar den på musklicket.
+        ctx.drawImage(mapmarker,xFromSlice - 21,yFromSlice - 61);
 
     }
 
     //Om url INTE innehåller parametrar, alltså startläge
     else if(regxRes == false) {
 
-        //Ger våningstext rätt värde
-        //document.getElementById("våningstext").innerHTML = "Våning " + document.getElementById('vSelect').value;
         //Ritar start-bakgrund (just nu våning 2)
         ctx.drawImage(background2,0,0);
     }
@@ -202,16 +192,7 @@ function clickCanvas() {
         ctx.drawImage(background9,0,0);      
     }
 
-    //Börjar rita cirkeln
-    /* ctx.beginPath();
-    ctx.arc(event.offsetX,event.offsetY,40,0,2*Math.PI);
-    //Style cirkelns utkant
-    ctx.strokeStyle = "rgba(255,0,0,0.3)";
-    ctx.stroke();
-    //Style cirkelns innehåll
-    ctx.fillStyle = "rgba(255,0,0,0.3)";
-    ctx.fill(); */
-
+    //Ritar map_marker och centrerar den på musklicket.
     ctx.drawImage(mapmarker,event.offsetX - 21,event.offsetY - 61);
     
 
