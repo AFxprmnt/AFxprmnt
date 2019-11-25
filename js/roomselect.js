@@ -1,5 +1,5 @@
-const urlRooms = 'http://127.0.0.1:8080/data/rooms.json';
-const urlRoomCoords = 'http://127.0.0.1:8080/data/rumskordinater.json';
+const urlRooms = 'https://afxprmnt.github.io/AFxprmnt/data/rooms.json';
+/* const urlRoomCoords = 'http://127.0.0.1:8080/data/rumskordinater.json'; */
 
 
 var options = {
