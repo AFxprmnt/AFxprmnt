@@ -41,7 +41,11 @@ var options = {
             type: "slide", //normal|slide|fade
                 time: 400,
         callback: function() {}
-        } 
+    
+        },
+        sort: {
+			enabled: true
+		}
    },     
     
     template: {
