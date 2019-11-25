@@ -101,6 +101,7 @@ function urlDrawOnload() {
 
 }
 
+
 //Dropdown-script, aktiveras vid byte av dropdown-option, som byter bild på canvas mellan v4 & v5
 function bytVaning() {
 

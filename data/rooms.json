@@ -1,0 +1,441 @@
+{
+  "Hus 1":
+  [
+    {
+      "roomName":"Hus 1, Plan 2 Rum 116",
+      "roomCoordinate":"index.html?v=2x=0465y=0370"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 117",
+      "roomCoordinate":"index.html?v=2x=0462y=0427"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 118",
+      "roomCoordinate":"index.html?v=2x=0412y=0426"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 120",
+      "roomCoordinate":"index.html?v=2x=0379y=0354"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 121",
+      "roomCoordinate":"index.html?v=2x=0411y=0357"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 216",
+      "roomCoordinate":"index.html?v=2x=0261y=0089"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 217",
+      "roomCoordinate":"index.html?v=2x=0225y=0065"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 219",
+      "roomCoordinate":"index.html?v=2x=0285y=0050"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 220",
+      "roomCoordinate":"index.html?v=2x=0305y=0058"
+    },
+    {
+      "roomName":"Hus 1, Plan 2 Rum 221",
+      "roomCoordinate":"index.html?v=2x=0331y=0073"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 112",
+      "roomCoordinate":"index.html?v=3x=0749y=0288"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 113",
+      "roomCoordinate":"index.html?v=3x=0747y=0338"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 114",
+      "roomCoordinate":"index.html?v=3x=0749y=0384"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 115",
+      "roomCoordinate":"index.html?v=3x=0745y=0437"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 116",
+      "roomCoordinate":"index.html?v=3x=0688y=0439"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 117",
+      "roomCoordinate":"index.html?v=3x=0608y=0433"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 118",
+      "roomCoordinate":"index.html?v=3x=0549y=0403"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 124",
+      "roomCoordinate":"index.html?v=3x=0701y=0380"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 125",
+      "roomCoordinate":"index.html?v=3x=0679y=0379"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 126",
+      "roomCoordinate":"index.html?v=3x=0658y=0383"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum 127",
+      "roomCoordinate":"index.html?v=3x=0633y=0380"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum Studios",
+      "roomCoordinate":"index.html?v=3x=0591y=0109"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum NOC/SOC",
+      "roomCoordinate":"index.html?v=3x=0454y=0395"
+    },
+    {
+      "roomName":"Hus 1, Plan 3 Rum Lab",
+      "roomCoordinate":"index.html?v=3x=0366y=0413"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 113",
+      "roomCoordinate":"index.html?v=4x=0501y=0273"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 114",
+      "roomCoordinate":"index.html?v=4x=0569y=0296"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 119",
+      "roomCoordinate":"index.html?v=4x=0279y=0362"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 211",
+      "roomCoordinate":"index.html?v=4x=0209y=0198"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 212",
+      "roomCoordinate":"index.html?v=4x=0294y=0054"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 214",
+      "roomCoordinate":"index.html?v=4x=0330y=0076"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 217",
+      "roomCoordinate":"index.html?v=4x=0342y=0134"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 218",
+      "roomCoordinate":"index.html?v=4x=0318y=0112"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 221",
+      "roomCoordinate":"index.html?v=4x=0260y=0085"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 313",
+      "roomCoordinate":"index.html?v=4x=0113y=0347"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 316",
+      "roomCoordinate":"index.html?v=4x=0175y=0337"
+    },
+    {
+      "roomName":"Hus 1, Plan 4 Rum 317",
+      "roomCoordinate":"index.html?v=4x=0207y=0330"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 113",
+      "roomCoordinate":"index.html?v=5x=0505y=0276"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 211",
+      "roomCoordinate":"index.html?v=5x=0214y=0203"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 212",
+      "roomCoordinate":"index.html?v=5x=0294y=0052"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 214",
+      "roomCoordinate":"index.html?v=5x=0331y=0070"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 217",
+      "roomCoordinate":"index.html?v=5x=0344y=0129"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 218",
+      "roomCoordinate":"index.html?v=5x=0315y=0117"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 221",
+      "roomCoordinate":"index.html?v=5x=0260y=0081"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 313",
+      "roomCoordinate":"index.html?v=5x=0112y=0348"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 316",
+      "roomCoordinate":"index.html?v=5x=0175y=0335"
+    },
+    {
+      "roomName":"Hus 1, Plan 5 Rum 317",
+      "roomCoordinate":"index.html?v=5x=0277y=0364"
+    },
+    {
+      "roomName":"Hus 1, Plan 6 Rum 113",
+      "roomCoordinate":"index.html?v=6x=0503y=0271"
+    },
+    {
+      "roomName":"Hus 1, Plan 6 Rum 114",
+      "roomCoordinate":"index.html?v=6x=0573y=0297"
+    },
+    {
+      "roomName":"Hus 1, Plan 6 Rum 212",
+      "roomCoordinate":"index.html?v=6x=0284y=0044"
+    },
+    {
+      "roomName":"Hus 1, Plan 7 Rum 115",
+      "roomCoordinate":"index.html?v=7x=0579y=0385"
+    },
+    {
+      "roomName":"Hus 1, Plan 7 Rum 212",
+      "roomCoordinate":"index.html?v=7x=0489y=0234"
+    },
+    {
+      "roomName":"Hus 1, Plan 7 Rum 213",
+      "roomCoordinate":"index.html?v=7x=0443y=0119"
+    },
+    {
+      "roomName":"Hus 1, Plan 7 Rum 215",
+      "roomCoordinate":"index.html?v=7x=0623y=0151"
+    },
+    {
+      "roomName":"Hus 1, Plan 7 Rum 216",
+      "roomCoordinate":"index.html?v=7x=0594y=0137"
+    },
+    {
+      "roomName":"Hus 1, Plan 7 Rum 219",
+      "roomCoordinate":"index.html?v=7x=0544y=0106"
+    },
+    {
+      "roomName":"Hus 1, Plan 8 Rum 112",
+      "roomCoordinate":"index.html?v=8x=0641y=0228"
+    },
+    {
+      "roomName":"Hus 1, Plan 8 Rum 113",
+      "roomCoordinate":"index.html?v=8x=0680y=0235"
+    },
+    {
+      "roomName":"Hus 1, Plan 8 Rum 114",
+      "roomCoordinate":"index.html?v=8x=0704y=0231"
+    },
+    {
+      "roomName":"Hus 1, Plan 8 Rum 115",
+      "roomCoordinate":"index.html?v=8x=0676y=0439"
+    },
+    {
+      "roomName":"Hus 1, Plan 8 Rum 116",
+      "roomCoordinate":"index.html?v=8x=0610y=0437"
+    },
+    {
+      "roomName":"Hus 1, Plan 9 Rum 112",
+      "roomCoordinate":"index.html?v=9x=0596y=0239"
+    },
+    {
+      "roomName":"Hus 1, Plan 9 Rum 113",
+      "roomCoordinate":"index.html?v=9x=0645y=0234"
+    },
+    {
+      "roomName":"Hus 1, Plan 9 Rum 114",
+      "roomCoordinate":"index.html?v=9x=0689y=0233"
+    },
+    {
+      "roomName":"Hus 1, Plan 9 Rum 115",
+      "roomCoordinate":"index.html?v=9x=0664y=0437"
+    },
+    {
+      "roomName":"Hus 1, Plan 9 Rum 116",
+      "roomCoordinate":"index.html?v=9x=0595y=0435"
+    }
+
+  ],
+  "Hus 2":
+  [
+    {
+      "roomName":"Hus 2, Plan 2 Rum 117",
+      "roomCoordinate":"index.html?v=2x=0924y=0256"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 118",
+      "roomCoordinate":"index.html?v=2x=0933y=0280"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 127",
+      "roomCoordinate":"index.html?v=2x=0832y=0153"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 128",
+      "roomCoordinate":"index.html?v=2x=0848y=0139"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 129",
+      "roomCoordinate":"index.html?v=2x=0874y=0130"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 130",
+      "roomCoordinate":"index.html?v=2x=0893y=0129"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 131",
+      "roomCoordinate":"index.html?v=2x=0924y=0102"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 132",
+      "roomCoordinate":"index.html?v=2x=0947y=0143"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 133",
+      "roomCoordinate":"index.html?v=2x=0973y=0188"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 134",
+      "roomCoordinate":"index.html?v=2x=0986y=0236"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 135",
+      "roomCoordinate":"index.html?v=2x=1010y=0275"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 210",
+      "roomCoordinate":"index.html?v=2x=0647y=0282"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 211",
+      "roomCoordinate":"index.html?v=2x=0738y=0464"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 212",
+      "roomCoordinate":"index.html?v=2x=0654y=0451"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 311",
+      "roomCoordinate":"index.html?v=2x=0877y=0421"
+    },
+    {
+      "roomName":"Hus 2, Plan 2 Rum 312",
+      "roomCoordinate":"index.html?v=2x=0943y=0463"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 114",
+      "roomCoordinate":"index.html?v=4x=0801y=0164"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 121",
+      "roomCoordinate":"index.html?v=4x=0961y=0300"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 210",
+      "roomCoordinate":"index.html?v=4x=0683y=0315"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 211",
+      "roomCoordinate":"index.html?v=4x=0719y=0318"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 214",
+      "roomCoordinate":"index.html?v=4x=0666y=0410"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 219",
+      "roomCoordinate":"index.html?v=4x=0774y=0427"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 310",
+      "roomCoordinate":"index.html?v=4x=0905y=0386"
+    },
+    {
+      "roomName":"Hus 2, Plan 4 Rum 312",
+      "roomCoordinate":"index.html?v=4x=0931y=0418"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 112",
+      "roomCoordinate":"index.html?v=5x=0792y=0158"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 113",
+      "roomCoordinate":"index.html?v=5x=0834y=0136"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 121",
+      "roomCoordinate":"index.html?v=5x=0958y=0290"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 210",
+      "roomCoordinate":"index.html?v=5x=0691y=0312"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 211",
+      "roomCoordinate":"index.html?v=5x=0721y=0319"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 214",
+      "roomCoordinate":"index.html?v=5x=0669y=0410"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 219",
+      "roomCoordinate":"index.html?v=5x=0772y=0423"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 310",
+      "roomCoordinate":"index.html?v=5x=0904y=0377"
+    },
+    {
+      "roomName":"Hus 2, Plan 5 Rum 312",
+      "roomCoordinate":"index.html?v=5x=0935y=0417"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 112",
+      "roomCoordinate":"index.html?v=6x=0796y=0163"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 113",
+      "roomCoordinate":"index.html?v=6x=0833y=0137"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 114",
+      "roomCoordinate":"index.html?v=6x=0877y=0120"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 120",
+      "roomCoordinate":"index.html?v=6x=0956y=0293"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 210",
+      "roomCoordinate":"index.html?v=6x=0689y=0309"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 211",
+      "roomCoordinate":"index.html?v=6x=0725y=0315"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 214",
+      "roomCoordinate":"index.html?v=6x=0666y=0410"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 219",
+      "roomCoordinate":"index.html?v=6x=0771y=0421"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 310",
+      "roomCoordinate":"index.html?v=6x=0901y=0384"
+    },
+    {
+      "roomName":"Hus 2, Plan 6 Rum 312",
+      "roomCoordinate":"index.html?v=6x=0937y=0422"
+    }
+  ]
+}
