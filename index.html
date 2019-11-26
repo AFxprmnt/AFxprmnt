@@ -16,6 +16,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/easy-autocomplete.min.css" rel="stylesheet" >
+    <link href="css/easy-autocomplete.themes.min.css" rel="stylesheet" >
   </head>
 
   <body onload="urlDrawOnload()">
@@ -46,6 +48,10 @@
         <p class="sr-only">Denna sida är i dagsläget dåligt tillgänglighetsanpassad. Jag ber om ursäkt.</p>
         
         <section>
+
+            <div id ="autocompContainer" style="margin-left: 400px;"> 
+                <input id="autoCompRooms" />   
+            </div>
             
             <div id="infoContainer">
 
@@ -74,6 +80,7 @@
                 </div>
 
                 <p id="koordinaterText"></p>
+               
     
             </div>
     
@@ -93,6 +100,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easy-autocomplete.min.js"></script>
     <script type="text/javascript" src="js/jsfile.js"></script>
+    <script type="text/javascript" src="js/roomselect.js"></script>
+
   </body>
 </html>
