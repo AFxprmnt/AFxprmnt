@@ -1,117 +1,104 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="En applikation som hjälper dig hitta mötesrum i Arbetsförmedlingen högkvarter i Solna">
-    <meta name="author" content="Isak Eriksson & Bruce Anderson">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
-     integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
-    
-
-    <title>Hitta i HK</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/easy-autocomplete.min.css" rel="stylesheet" >
-    <link href="css/easy-autocomplete.themes.min.css" rel="stylesheet" >
-
-    <link rel="shortcut icon" type="image/png" href="images/favicon-emoji.png"/>
-    <!-- <link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/> --> 
-  </head>
-
-  <body onload="urlDrawOnload()">
-
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Hitta i HK</a>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Dela plats på karta</a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="rum.html">Hitta mötesrum</a>
-                    </li> -->
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main role="main" class="container">
-
-      <div class="container">
-        <p class="sr-only">Denna sida är i dagsläget dåligt tillgänglighetsanpassad. Jag ber om ursäkt.</p>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Platsen du söker markerad på en karta över Arbetsförmedlingens HK">
+        <!-- <meta name="description" content="En applikation som hjälper dig hitta mötesrum i Arbetsförmedlingen högkvarter i Solna"> -->
+        <meta name="author" content="Isak Eriksson & Bruce Anderson">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+        integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
         
-        <section>
 
-            <!-- Type-ahead fältet -->
-            <div id ="autocompContainer" style="margin-left: 400px;"> 
-                <input id="autoCompRooms" />   
+        <title>Hitta i HK</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/easy-autocomplete.min.css" rel="stylesheet" >
+        <link href="css/easy-autocomplete.themes.min.css" rel="stylesheet" >
+
+        <link rel="shortcut icon" type="image/png" href="images/favicon-emoji.png"/>
+        <!-- <link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/> --> 
+    </head>
+
+    <body onload="urlDrawOnload()">
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Hitta i HK</a>
             </div>
+        </nav>
+
+        <main role="main" class="container">
+
+            <div class="container">
+                <p class="sr-only">Notera att denna sida har dålig tillgänglighet. Jag saknar kunskapen att förbättra detta, tyvärr.</p>
+                
+                <section>
+
+                    <!-- Type-ahead fältet -->
+                    <div id ="autocompContainer" style="margin-left: 400px;"> 
+                        <input id="autoCompRooms" />   
+                    </div>
+                    
+                    <div id="infoContainer">
+
+                        <!-- Dropdown välj våning -->
+                        <div id="vselectDiv">
+                            <label for="vSelect">Välj plan</label>
+                            <select id="vSelect" name="plan" onchange="bytVaning()">
+                                <option value="2">Plan 2</option>
+                                <option value="3">Plan 3</option>
+                                <option value="4">Plan 4</option>
+                                <option value="5">Plan 5</option>
+                                <option value="6">Plan 6</option>
+                                <option value="7">Plan 7</option>
+                                <option value="8">Plan 8</option>
+                                <option value="9">Plan 9</option>
+                            </select>
+                        </div>
             
-            <div id="infoContainer">
+                        <!-- Instruktioner text -->
+                        <div id="instruktionerDiv">
+                            <p>Klicka på kartan för att markera en plats</p>
+                        </div>
+            
+                        <!-- Url-fält och kopiera-knapp -->
+                        <div id="copyDiv">
+                            <p>Kopiera och skicka följande URL:</p>
+                            <input type="text" value="" id="urlInput"> 
+                            <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
+                        </div>
 
-                <!-- Dropdown välj våning -->
-                <div id="vselectDiv">
-                    <label for="vSelect">Välj plan</label>
-                    <select id="vSelect" name="plan" onchange="bytVaning()">
-                        <option value="2">Plan 2</option>
-                        <option value="3">Plan 3</option>
-                        <option value="4">Plan 4</option>
-                        <option value="5">Plan 5</option>
-                        <option value="6">Plan 6</option>
-                        <option value="7">Plan 7</option>
-                        <option value="8">Plan 8</option>
-                        <option value="9">Plan 9</option>
-                    </select>
-                </div>
-     
-                <!-- Instruktioner text -->
-                <div id="instruktionerDiv">
-                    <p>Klicka på kartan för att markera en plats</p>
-                </div>
-    
-                <!-- Url-fält och kopiera-knapp -->
-                <div id="copyDiv">
-                    <p>Kopiera och skicka följande URL:</p>
-                    <input type="text" value="" id="urlInput"> 
-                    <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
-                </div>
-
-                <!-- Dynamisk kordinat-text -->
-                <!-- <p id="koordinaterText"></p> -->
-               
-    
+                        <!-- Dynamisk kordinat-text -->
+                        <!-- <p id="koordinaterText"></p> -->
+            
+                    </div>
+            
+                    <!-- Canvas med kartan (notera hårdkodad storlek nödvändig) -->
+                    <canvas id="myCanvas" onclick="clickCanvas()" width="1100" height="640" >
+                    Your browser does not support the HTML5 canvas tag.</canvas>
+                    
+                </section>
             </div>
-    
-            <!-- Canvas med kartan (notera hårdkodad storlek nödvändig) -->
-            <canvas id="myCanvas" onclick="clickCanvas()" width="1100" height="640" >
-            Your browser does not support the HTML5 canvas tag.</canvas>
-        </section>
-      </div>
 
 
-    </main><!-- /.container -->
+        </main><!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easy-autocomplete.min.js"></script>
-    <script type="text/javascript" src="js/jsfile.js"></script>
-    <script type="text/javascript" src="js/roomselect.js"></script>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easy-autocomplete.min.js"></script>
+        <script type="text/javascript" src="js/jsfile.js"></script>
+        <script type="text/javascript" src="js/roomselect.js"></script>
 
-  </body>
+    </body>
 </html>
