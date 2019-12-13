@@ -30,7 +30,7 @@
     },
     {
       "roomName": "Hus 1, Plan 2 Rum 217A Öppen yta",
-      "roomCoordinate": "index.html?v=2x=0225y=0065"
+      "roomCoordinate": "index.html?v=2x=0251y=0041"
     },
     {
       "roomName": "Hus 1, Plan 2 Rum 219",
@@ -89,7 +89,7 @@
       "roomCoordinate": "index.html?v=3x=0633y=0380"
     },
     {
-      "roomName": "Hus 1, Plan 3 Rum 303 Öppen yta - Workshop-rum",
+      "roomName": "Hus 1, Plan 3 Rum 303 Öppen yta",
       "roomCoordinate": "index.html?v=3x=0420y=0263"
     },
     {
@@ -347,6 +347,14 @@
       "roomCoordinate": "index.html?v=2x=0654y=0451"
     },
     {
+      "roomName": "Hus 2, Plan 2 Rum 213",
+      "roomCoordinate": "index.html?v=2x=0634y=0416"
+    },
+    {
+      "roomName": "Hus 2, Plan 2 Rum 310",
+      "roomCoordinate": "index.html?v=2x=0906y=0428"
+    },
+    {
       "roomName": "Hus 2, Plan 2 Rum 311",
       "roomCoordinate": "index.html?v=2x=0877y=0421"
     },
@@ -365,6 +373,10 @@
     {
       "roomName": "Hus 2, Plan 4 Rum 121",
       "roomCoordinate": "index.html?v=4x=0961y=0300"
+    },
+    {
+      "roomName": "Hus 2, Plan 4 Rum 203B Öppen yta",
+      "roomCoordinate": "index.html?v=4x=0728y=0464"
     },
     {
       "roomName": "Hus 2, Plan 4 Rum 210",
@@ -401,6 +413,10 @@
     {
       "roomName": "Hus 2, Plan 5 Rum 121",
       "roomCoordinate": "index.html?v=5x=0958y=0290"
+    },
+    {
+      "roomName": "Hus 2, Plan 5 Rum 203B Öppen yta",
+      "roomCoordinate": "index.html?v=5x=0715y=0467"
     },
     {
       "roomName": "Hus 2, Plan 5 Rum 210",
