@@ -213,6 +213,10 @@
       "roomCoordinate": "index.html?v=5x=0277y=0364"
     },
     {
+      "roomName": "Hus 1, Plan 6 Utställningsyta",
+      "roomCoordinate": "index.html?v=6x=0436y=0228"
+    },
+    {
       "roomName": "Hus 1, Plan 6 Rum 113",
       "roomCoordinate": "index.html?v=6x=0503y=0271"
     },
@@ -287,7 +291,16 @@
     {
       "roomName": "Hus 1, Plan 9 Rum 116",
       "roomCoordinate": "index.html?v=9x=0595y=0435"
+    },
+    {
+      "roomName": "Hus 1, Plan 9 Bibliotek",
+      "roomCoordinate": "index.html?v=9x=0543y=0297"
+    },
+    {
+      "roomName": "Hus 1, Plan 9 Hälsorummet",
+      "roomCoordinate": "index.html?v=9x=0564y=0387"
     }
+    
   ],
   "Hus 2": [
     {
