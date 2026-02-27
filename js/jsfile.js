@@ -5,41 +5,36 @@ var newUrl = "";
 var regxPatt = new RegExp("x=");
 var regxRes = regxPatt.test(baseUrl);
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-
 //Skapar variabler för canvas-storleken att användas i scriptet.
-var canvasWidth = 1100;
-var canvasHeight = 640;
+var canvasWidth = 1200;
+var canvasHeight = 660;
+var skala = 1;
 
-//Sätter variabler för respektive bakgrundsbild, men ritar ingen bakgrund i detta stadie (viktigt)
-var background2 = new Image();
-background2.src = "images/plan2.jpg";
+var c = document.getElementById("myCanvas");
 
-var background3 = new Image();
-background3.src = "images/plan3.jpg";
+c.width = canvasWidth * skala;
+c.height = canvasHeight * skala;
+c.style.width = canvasWidth+"px";
+c.style.height = canvasHeight+"px";
 
-var background4 = new Image();
-background4.src = "images/plan4.jpg";
-
-var background5 = new Image();
-background5.src = "images/plan5.jpg";
-
-var background6 = new Image();
-background6.src = "images/plan6.jpg";
-
-var background7 = new Image();
-background7.src = "images/plan7.jpg";
-
-var background8 = new Image();
-background8.src = "images/plan8.jpg";
-
-var background9 = new Image();
-background9.src = "images/plan9.jpg";
+var ctx = c.getContext("2d");
+ctx.scale(skala,skala);
 
 //Sätter variabler för map marker
 var mapmarker = new Image();
 mapmarker.src = "images/map_marker_green.png";
+
+function skapaImgElement(){
+    // create a new img element
+    const newImg = document.createElement("img");
+    newImg.setAttribute("id", "mapImg");
+    newImg.setAttribute("width", "1200");
+    newImg.setAttribute("height", "660");
+
+    // add the newly created element into the DOM
+    const currentDiv = document.getElementById("myCanvas");
+    document.body.insertBefore(newImg, currentDiv);
+}
 
 //Aktiveras vid body-onload 
 function urlDrawOnload() {
@@ -57,103 +52,32 @@ function urlDrawOnload() {
         //Byter våning i select till våning från url-params. -4 då det bara finns två options hittills.
         document.getElementById('vSelect').selectedIndex = vFromSlice - 2;
 
-        // Gömmer dropdown-menyn om url innehåller parametrar (blivit länkad)
-        document.getElementById("vselectDiv").style.visibility = "hidden";
-        document.getElementById("instruktionerDiv").style.display = "none";
-
-        if(vFromSlice == 2) {  
-            ctx.drawImage(background2,0,0);  
-            
-        } 
-        else if(vFromSlice == 3) {
-            ctx.drawImage(background3,0,0);
-        }
-        else if(vFromSlice == 4) {
-            ctx.drawImage(background4,0,0);
-        }
-        else if(vFromSlice == 5) {
-            ctx.drawImage(background5,0,0);
-        }
-        else if(vFromSlice == 6) {
-            ctx.drawImage(background6,0,0);
-        }
-        else if(vFromSlice == 7) {
-            ctx.drawImage(background7,0,0);
-        }
-        else if(vFromSlice == 8) {
-            ctx.drawImage(background8,0,0);
-        }
-        else if(vFromSlice == 9) {
-            ctx.drawImage(background9,0,0);
-        }
+        //Ändrar karta till den våning som indikeras i url:en
+        document.getElementById("mapImg").src="images/plan" + vFromSlice + ".svg";
 
         //Ritar map_marker och centrerar den på musklicket.
         ctx.drawImage(mapmarker,xFromSlice - 21,yFromSlice - 61);
 
     }
-
-    //Om url INTE innehåller parametrar, alltså startläge
-    else if(regxRes == false) {
-
-        //Ritar start-bakgrund (just nu våning 2)
-        ctx.drawImage(background2,0,0);
-    }
-
+    /*else {
+        skapaImgElement();
+        document.getElementById("mapImg").src="images/plan4.svg";
+    }*/
 }
 
-
-//Dropdown-script, aktiveras vid byte av dropdown-option, som byter bild på canvas mellan v4 & v5
-function bytVaning() {
-
-    //Beroende på vilken våning som valts: byts våningstext, rensar input-fält och ritar respektive bakgrund
-    if(document.getElementById('vSelect').value == "2") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";
-        //Ritar rätt bakgrund
-        ctx.drawImage(background2,0,0); 
-    } 
-    else if(document.getElementById('vSelect').value == "3") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background3,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "4") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background4,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "5") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background5,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "6") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background6,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "7") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background7,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "8") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background8,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "9") {
-        //Rensar input-fältet
-        document.getElementById("urlInput").value = "";    
-        //Ritar rätt bakgrund
-        ctx.drawImage(background9,0,0);      
-    }
+//Dropdown-script, aktiveras vid byte av dropdown-option, som byter kartans bild
+function bytVaning(){
+    //hämtar värdet av vilken våning som är vald (2-9)
+    var aktivVaning = document.getElementById('vSelect').value;
+    //Rensar input-fältet
+    document.getElementById("urlInput").value = "";
+    //Ändrar kartbild (img-elementets källa)
+    document.getElementById("mapImg").src="images/plan" + aktivVaning + ".svg";
+    //Tar bort eventuell markör som blivit kvar efter att man klickat på bilden
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    // Döljer inputfält och visar instruktioner
+    document.getElementById("instruktionerDiv").style.display = "inline-block";
+    document.getElementById("copyDiv").style.display = "none";
 }
 
 //Aktiveras vid klick på canvas
@@ -164,39 +88,12 @@ function clickCanvas() {
         return { x: event.offsetX, y: event.offsetY };
     }
     
-    //Rensar föregående cirkel samt bakgrund
+    //Rensar föregående markör
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     
-    //Beroende på vilken våning det är så ritar den bakgrunden igen
-    if(document.getElementById('vSelect').value == "2") {
-        ctx.drawImage(background2,0,0); 
-    } 
-    else if(document.getElementById('vSelect').value == "3") {
-        ctx.drawImage(background3,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "4") {
-        ctx.drawImage(background4,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "5") {
-        ctx.drawImage(background5,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "6") {
-        ctx.drawImage(background6,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "7") {
-        ctx.drawImage(background7,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "8") {
-        ctx.drawImage(background8,0,0);      
-    }
-    else if(document.getElementById('vSelect').value == "9") {
-        ctx.drawImage(background9,0,0);      
-    }
-
     //Ritar map_marker och centrerar den på musklicket.
     ctx.drawImage(mapmarker,event.offsetX - 21,event.offsetY - 61);
     
-
     //Skapar url med koordinater i parametrar
     var vaningAktiv = document.getElementById('vSelect').value;
 
@@ -214,10 +111,10 @@ function clickCanvas() {
         var newUrl = baseUrl + "?v=" + vaningAktiv + "x=" + xZerofilled + "y=" + yZerofilled;
     }
     
-    // Visar dropdown-meny och inputfält när man klickat på canvas
-    document.getElementById("vselectDiv").style.visibility = "visible";
+    // Visar inputfält och döljer instruktioner när man klickat på canvas
     document.getElementById("instruktionerDiv").style.display = "none";
-    document.getElementById("copyDiv").style.visibility = "visible";
+    document.getElementById("copyDiv").style.display = "inline-block";
+
 
     //Fyller input-fält med genererad url
     document.getElementById("urlInput").value = newUrl;

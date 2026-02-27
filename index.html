@@ -26,67 +26,61 @@
 
     <body onload="urlDrawOnload()">
 
+        
         <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
             <div class="container">
                 <a class="navbar-brand" href="index.html">Hitta i HK</a>
+
+                <!--Dropdown välj våning-->
+                <div id="vselectDiv">
+                    <!-- <label for="vSelect">Välj plan</label> -->
+                    <select id="vSelect" name="plan" onchange="bytVaning(value)">
+                        <option value="2">Plan 2</option>
+                        <option value="3">Plan 3</option>
+                        <option value="4" selected>Plan 4</option>
+                        <option value="5">Plan 5</option>
+                        <option value="6">Plan 6</option>
+                        <option value="7">Plan 7</option>
+                        <option value="8">Plan 8</option>
+                        <option value="9">Plan 9</option>
+                    </select>
+                </div>
+
+                <div id ="autocompContainer"> 
+                    <input id="autoCompRooms" />   
+                </div>
+                
+                <!-- Instruktioner text -->
+                <div id="instruktionerDiv">
+                    <label>Klicka på kartan för att markera en plats</label>
+                </div>
+    
+                <!-- Url-fält och kopiera-knapp -->
+                <div id="copyDiv">
+                    <label>Kopiera och skicka följande URL:</label>
+                    <input type="text" value="" id="urlInput"> 
+                    <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
+                </div>
             </div>
         </nav>
+        <!-- Dynamisk kordinat-text 
+        <div id="infoContainer">
+            <p id="koordinaterText"></p> 
+        </div> -->
 
         <main role="main" class="container">
-
             <div class="container">
                 <p class="sr-only">Notera att denna sida har dålig tillgänglighet. Jag saknar kunskapen att förbättra detta, tyvärr.</p>
-                
                 <section>
-
-                    <!-- Type-ahead fältet -->
-                    <div id ="autocompContainer" style="margin-left: 400px;"> 
-                        <input id="autoCompRooms" />   
-                    </div>
                     
-                    <div id="infoContainer">
-
-                        <!-- Dropdown välj våning -->
-                        <div id="vselectDiv">
-                            <label for="vSelect">Välj plan</label>
-                            <select id="vSelect" name="plan" onchange="bytVaning()">
-                                <option value="2">Plan 2</option>
-                                <option value="3">Plan 3</option>
-                                <option value="4">Plan 4</option>
-                                <option value="5">Plan 5</option>
-                                <option value="6">Plan 6</option>
-                                <option value="7">Plan 7</option>
-                                <option value="8">Plan 8</option>
-                                <option value="9">Plan 9</option>
-                            </select>
-                        </div>
-            
-                        <!-- Instruktioner text -->
-                        <div id="instruktionerDiv">
-                            <p>Klicka på kartan för att markera en plats</p>
-                        </div>
-            
-                        <!-- Url-fält och kopiera-knapp -->
-                        <div id="copyDiv">
-                            <p>Kopiera och skicka följande URL:</p>
-                            <input type="text" value="" id="urlInput"> 
-                            <button id="copyClipButton" onclick="kopieraUrl()">Kopiera</button>
-                        </div>
-
-                        <!-- Dynamisk kordinat-text -->
-                        <!-- <p id="koordinaterText"></p> -->
-            
-                    </div>
-            
+                    <img id="mapImg" src="images/plan4.svg" width="1200" height="660">
                     <!-- Canvas med kartan (notera hårdkodad storlek nödvändig) -->
-                    <canvas id="myCanvas" onclick="clickCanvas()" width="1100" height="640" >
-                    Your browser does not support the HTML5 canvas tag.</canvas>
-                    
+                    <canvas id="myCanvas" onclick="clickCanvas()"  >
+                    Your browser does not support the HTML5 canvas tag.</canvas>                  
                 </section>
+                
             </div>
-
-
-        </main><!-- /.container -->
+        </main>
 
 
         <!-- Bootstrap core JavaScript

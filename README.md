@@ -1,4 +1,6 @@
 # HKlocationtag
 
-Testar om det går att hosta sidan på github :)
+Ett personligt projekt som visar en karta över huvudkontoret.
+
+Du hittar kartan här:
 https://afxprmnt.github.io/AFxprmnt/
