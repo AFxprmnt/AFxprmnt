@@ -3,52 +3,47 @@ body {
     display: block; 
     width: 100%; 
     text-align: center; 
+    background-color: #ECF5F9;
 }
 
-#infoContainer {
-    display: block; 
-    width: 1000px; 
-    height: 90px; 
-    margin: auto;
-    text-align: center;
+label {
+    color: white;
 
-    /* border:1px solid green; */
 }
 
 #vselectDiv {
     display: inline-block;
-    margin-right: 40px;
     width: 150px;
     text-align: left;
-
-    /* border:1px solid blue; */
+    /*    
+    border:1px solid green;
+    */
 }
 
 #vselectDiv label{
     display: inline-block;
     margin-bottom: 5px;
 
-    /* border:1px solid red; */
+    
 }
 
 #vSelect{
     font-size: 18px;
-    width: 150px;           
+    width: 150px;
+    padding:12px 43px 12px 15px;           
 }
 
 #instruktionerDiv {
     display: inline-block;
-    position: absolute;
-    margin: 40px 0 0 50px;
+    width: 390px;
 }
 
 #copyDiv{
-    visibility: hidden;
-    display: inline-block;
+    display: none;
     text-align: left;
-    padding: 5px;
+    padding: 0px;
+    max-width: 390px;
 
-    /* border:1px solid red; */
 }
 
 #våningstext{
@@ -59,12 +54,30 @@ body {
     width: 100px;
 }
 
-#myCanvas {
-    margin: 20px auto;
+.container {
+    position: relative;
+}
 
-    /* border:1px solid red; */
+#myCanvas {
+    margin: 0px auto;
+    z-index: 1;
+}
+
+img, #myCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #copyDiv input{
     width: 280px;
+}
+
+p {
+    margin-top: 40px;
+}
+
+#feedback-CTA-text {
+    position: relative;
+    top: 660px;
 }

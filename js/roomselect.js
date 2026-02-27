@@ -1,3 +1,4 @@
+/* const urlRooms = "/data/rooms.json"; */
 const urlRooms = 'https://afxprmnt.github.io/AFxprmnt/data/rooms.json';
 /* const urlRoomCoords = 'http://127.0.0.1:8080/data/rumskordinater.json'; */
 
@@ -5,7 +6,7 @@ const urlRooms = 'https://afxprmnt.github.io/AFxprmnt/data/rooms.json';
 var options = {
     url: urlRooms,
 
-    placeholder: "Sök på Hus, plan eller rumsnummer",
+    placeholder: "Sök på Hus, Plan eller Rumsnummer",
 
     theme: "square",
 
@@ -33,13 +34,13 @@ var options = {
        },
         showAnimation: {
             type: "slide", //normal|slide|fade
-            time: 600,
+            time: 200,
             callback: function() {}
         },
 
         hideAnimation: {
             type: "slide", //normal|slide|fade
-                time: 400,
+                time: 100,
         callback: function() {}
     
         },
